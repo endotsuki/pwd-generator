@@ -1,10 +1,10 @@
-import { Button } from '@/components/ui/button'
-import { Copy, Check, Sparkles } from 'lucide-react'
+import { Button } from "@/components/ui/button";
+import { Copy, Check, Sparkles } from "lucide-react";
 
 interface PasswordDisplayProps {
-  password: string
-  onCopy: () => void
-  copied: boolean
+  password: string;
+  onCopy: () => void;
+  copied: boolean;
 }
 
 export default function PasswordDisplay({
@@ -12,31 +12,34 @@ export default function PasswordDisplay({
   onCopy,
   copied,
 }: PasswordDisplayProps) {
-  const hasPassword = Boolean(password)
+  const hasPassword = Boolean(password);
 
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between gap-3">
-        <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
-          Result
-        </span>
-      </div>
-      <div className="flex gap-2">
-        <div
-          className={`flex min-h-[3.25rem] flex-1 items-center rounded-2xl border px-4 py-3 ${
-            hasPassword
-              ? 'border-white/[0.08] bg-black/20'
-              : 'border-dashed border-white/[0.06] bg-black/10'
-          }`}
-        >
+    <div className="space-y-2">
+      <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">
+        Result
+      </span>
+      <div
+        className={`flex min-h-[3.25rem] items-center gap-3 rounded-xl border-2 px-4 py-3 transition-all duration-200 ${
+          hasPassword
+            ? "border-stone-900 bg-white"
+            : "border-dashed border-stone-300 bg-transparent"
+        }`}
+      >
+        <div className="flex-1">
           {hasPassword ? (
-            <code className="w-full break-all font-mono text-[15px] leading-relaxed tracking-wide text-zinc-100 selection:bg-sky-500/40 selection:text-white">
+            <code className="block w-full break-all font-mono text-[15px] font-semibold leading-relaxed tracking-wide text-stone-900 selection:bg-orange-200">
               {password}
             </code>
           ) : (
-            <div className="flex items-center gap-2 text-sm text-zinc-600">
-              <Sparkles className="size-4 shrink-0 text-zinc-600" aria-hidden />
-              <span>Generate a password to see it here</span>
+            <div className="flex items-center gap-2">
+              <Sparkles
+                className="size-4 shrink-0 text-stone-300"
+                aria-hidden
+              />
+              <span className="text-sm text-stone-300">
+                Your password will appear here
+              </span>
             </div>
           )}
         </div>
@@ -44,24 +47,25 @@ export default function PasswordDisplay({
           type="button"
           onClick={onCopy}
           disabled={!hasPassword}
-          variant="outline"
+          variant="ghost"
           size="icon"
-          className={`size-11 shrink-0 rounded-xl border transition ${
+          className={`size-9 shrink-0 rounded-lg border-2 transition-all duration-150 ${
             copied
-              ? 'border-emerald-500/50 bg-emerald-500/15 text-emerald-400 hover:bg-emerald-500/20'
-              : 'border-white/10 bg-zinc-900/60 text-zinc-300 hover:bg-zinc-800 disabled:opacity-35'
+              ? "border-emerald-600 bg-emerald-50 text-emerald-600"
+              : "border-stone-200 text-stone-400 hover:border-stone-400 hover:text-stone-700 disabled:opacity-25"
           }`}
         >
-          {copied ? (
-            <Check className="size-4" />
-          ) : (
-            <Copy className="size-4" />
-          )}
+          {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
         </Button>
       </div>
-      {copied && (
-        <p className="text-xs font-medium text-emerald-400/90">Copied to clipboard</p>
-      )}
+      <div
+        className={`flex items-center gap-1.5 transition-opacity duration-200 ${copied ? "opacity-100" : "opacity-0"}`}
+      >
+        <Check className="size-3 text-emerald-600" />
+        <p className="text-xs font-semibold text-emerald-700">
+          Copied to clipboard
+        </p>
+      </div>
     </div>
-  )
+  );
 }

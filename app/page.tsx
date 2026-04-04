@@ -51,46 +51,46 @@ export default function Home() {
   const strength = calculateStrength(generatedPassword)
 
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#060910] px-4 py-16 text-zinc-100">
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(56,189,248,0.12),transparent)]"
-        aria-hidden
-      />
-      <div
-        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_100%_100%,rgba(16,185,129,0.06),transparent)]"
-        aria-hidden
-      />
+    <main className="flex h-screen flex-col items-center justify-center bg-[#FAF8F4] px-4">
+      <div className="w-full max-w-md">
 
-      <div className="relative mx-auto w-full max-w-lg">
-        <header className="mb-10 text-center">
-          <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
-            Password Generator
-          </h1>
-          <p className="mt-2 text-sm text-zinc-500">
-            Create strong, secure passwords instantly
+        {/* Header */}
+        <header className="mb-5 flex items-end justify-between">
+          <div>
+            <div className="mb-0.5 text-[10px] font-bold uppercase tracking-[0.22em] text-orange-500">
+              Security Tool
+            </div>
+            <h1 className="text-3xl font-bold leading-none tracking-tight text-stone-900">
+              Password Generator
+            </h1>
+          </div>
+          <p className="text-right text-xs text-stone-400 leading-relaxed">
+            Strong passwords<br />in seconds
           </p>
         </header>
 
-        <div className="rounded-3xl border border-white/[0.08] bg-white/[0.03] p-6 shadow-2xl shadow-black/40 backdrop-blur-xl sm:p-8">
-          <PasswordDisplay
-            password={generatedPassword}
-            onCopy={handleCopyToClipboard}
-            copied={copied}
-          />
+        {/* Card */}
+        <div className="rounded-2xl border-2 border-stone-900 bg-white shadow-[6px_6px_0px_0px_#1c1917]">
 
-          <div className="mt-6">
-            <StrengthMeter strength={strength} idle={!generatedPassword} />
+          {/* Result + Strength */}
+          <div className="rounded-t-2xl border-b-2 border-stone-900 bg-stone-50 px-5 py-4">
+            <PasswordDisplay
+              password={generatedPassword}
+              onCopy={handleCopyToClipboard}
+              copied={copied}
+            />
+            <div className="mt-3">
+              <StrengthMeter strength={strength} idle={!generatedPassword} />
+            </div>
           </div>
 
-          <div className="my-8 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-
-          <div className="space-y-8">
+          {/* Options */}
+          <div className="px-5 py-4 space-y-5">
             <PasswordInput
               value={userInput}
               onChange={setUserInput}
               onGenerate={handleGeneratePassword}
             />
-
             <OptionsPanel
               length={length}
               onLengthChange={setLength}
@@ -99,27 +99,28 @@ export default function Home() {
             />
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:gap-3">
+          {/* Buttons */}
+          <div className="flex gap-3 border-t-2 border-stone-900 px-5 py-4">
             <button
               type="button"
               onClick={handleGeneratePassword}
               disabled={!userInput.trim()}
-              className="h-11 flex-1 rounded-xl border border-white/10 bg-zinc-900/80 text-sm font-medium text-zinc-200 shadow-sm transition hover:border-white/15 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-40"
+              className="h-10 flex-1 rounded-xl border-2 border-stone-900 bg-white text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-30"
             >
               Transform text
             </button>
             <button
               type="button"
               onClick={handleGenerateRandomPassword}
-              className="h-11 flex-1 rounded-xl bg-emerald-500 text-sm font-semibold text-white shadow-lg shadow-emerald-500/25 transition hover:bg-emerald-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400"
+              className="h-10 flex-1 rounded-xl border-2 border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
             >
-              Random password
+              Random password →
             </button>
           </div>
         </div>
 
-        <p className="mt-8 text-center text-xs text-zinc-600">
-          Your password is generated locally and never stored
+        <p className="mt-3 text-center text-xs text-stone-400">
+          Generated locally · never stored · never sent
         </p>
       </div>
     </main>

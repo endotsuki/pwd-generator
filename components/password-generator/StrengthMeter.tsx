@@ -1,62 +1,60 @@
 interface StrengthMeterProps {
-  strength: 'weak' | 'medium' | 'strong'
-  idle?: boolean
+  strength: "weak" | "medium" | "strong";
+  idle?: boolean;
 }
 
 export default function StrengthMeter({ strength, idle }: StrengthMeterProps) {
-  const strengthConfig = {
+  const config = {
     weak: {
-      color: 'bg-rose-500',
-      label: 'Weak',
-      width: '33%',
-      textColor: 'text-rose-400',
+      segments: 1,
+      label: "Weak",
+      bar: "bg-rose-500",
+      badge: "bg-rose-100 text-rose-700 border-rose-300",
     },
     medium: {
-      color: 'bg-amber-400',
-      label: 'Medium',
-      width: '66%',
-      textColor: 'text-amber-300',
+      segments: 2,
+      label: "Medium",
+      bar: "bg-amber-400",
+      badge: "bg-amber-100 text-amber-700 border-amber-300",
     },
     strong: {
-      color: 'bg-emerald-400',
-      label: 'Strong',
-      width: '100%',
-      textColor: 'text-emerald-400',
+      segments: 3,
+      label: "Strong",
+      bar: "bg-emerald-500",
+      badge: "bg-emerald-100 text-emerald-700 border-emerald-300",
     },
-  }
-
-  if (idle) {
-    return (
-      <div className="space-y-2">
-        <div className="flex items-center justify-between">
-          <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
-            Strength
-          </span>
-          <span className="text-xs text-zinc-600">—</span>
-        </div>
-        <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800/80" />
-      </div>
-    )
-  }
-
-  const config = strengthConfig[strength]
+  };
 
   return (
-    <div className="space-y-2">
+    <div className="space-y-1.5">
       <div className="flex items-center justify-between">
-        <span className="text-[11px] font-medium uppercase tracking-[0.2em] text-zinc-500">
+        <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">
           Strength
         </span>
-        <span className={`text-xs font-medium ${config.textColor}`}>
-          {config.label}
-        </span>
+        {!idle ? (
+          <span
+            className={`rounded-full border px-2 py-0.5 text-[10px] font-bold ${config[strength].badge}`}
+          >
+            {config[strength].label}
+          </span>
+        ) : (
+          <span className="text-xs text-stone-300">—</span>
+        )}
       </div>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-zinc-800/80">
-        <div
-          className={`h-full rounded-full transition-all duration-500 ease-out ${config.color}`}
-          style={{ width: config.width }}
-        />
+      <div className="flex gap-1.5">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={i}
+            className={`h-1.5 flex-1 rounded-full transition-all duration-500 ${
+              idle
+                ? "bg-stone-200"
+                : i < config[strength].segments
+                  ? config[strength].bar
+                  : "bg-stone-200"
+            }`}
+          />
+        ))}
       </div>
     </div>
-  )
+  );
 }
