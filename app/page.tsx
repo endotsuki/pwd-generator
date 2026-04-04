@@ -57,7 +57,7 @@ export default function Home() {
         {/* Header */}
         <header className="mb-5 flex items-end justify-between">
           <h1 className="text-3xl font-bold leading-none tracking-tight text-stone-900">
-            Password Generator
+            Keyzen
           </h1>
         </header>
 
