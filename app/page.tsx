@@ -55,25 +55,15 @@ export default function Home() {
       <div className="w-full max-w-md">
         {/* Header */}
         <header className="mb-5 flex items-end justify-between">
-          <div>
-            <div className="mb-0.5 text-[10px] font-bold uppercase tracking-[0.22em] text-orange-500">
-              Security Tool
-            </div>
-            <h1 className="text-3xl font-bold leading-none tracking-tight text-stone-900">
-              Password Generator
-            </h1>
-          </div>
-          <p className="text-right text-xs text-stone-400 leading-relaxed">
-            Strong passwords
-            <br />
-            in seconds
-          </p>
+          <h1 className="text-3xl font-bold leading-none tracking-tight text-stone-900">
+            Password Generator
+          </h1>
         </header>
 
         {/* Card */}
         <div className="rounded-2xl border-2 border-stone-900 bg-white shadow-[6px_6px_0px_0px_#1c1917]">
           {/* Result + Strength */}
-          <div className="rounded-t-2xl border-b-2 border-stone-900 bg-stone-50 px-5 py-4">
+          <div className="rounded-t-2xl bg-stone-50 px-5 py-4">
             <PasswordDisplay
               password={generatedPassword}
               onCopy={handleCopyToClipboard}

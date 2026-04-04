@@ -16,9 +16,7 @@ export default function PasswordDisplay({
 
   return (
     <div className="space-y-2">
-      <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">
-        Result
-      </span>
+      <span className="text-lg font-medium text-orange-500">Result</span>
       <div
         className={`flex min-h-14 items-center gap-3 rounded-xl border-2 px-4 py-3 transition-all duration-200 ${
           hasPassword
@@ -34,10 +32,10 @@ export default function PasswordDisplay({
           ) : (
             <div className="flex items-center gap-2">
               <Sparkles
-                className="size-4 shrink-0 text-stone-300"
+                className="size-4 shrink-0 text-stone-400"
                 aria-hidden
               />
-              <span className="text-sm text-stone-300">
+              <span className=" text-stone-400">
                 Your password will appear here
               </span>
             </div>
@@ -49,7 +47,7 @@ export default function PasswordDisplay({
           disabled={!hasPassword}
           variant="ghost"
           size="icon"
-          className={`size-9 shrink-0 rounded-lg border-2 transition-all duration-150 ${
+          className={`size-9 shrink-0 cursor-pointer rounded-lg border-2 transition-all duration-150 ${
             copied
               ? "border-emerald-600 bg-emerald-50 text-emerald-600"
               : "border-stone-200 text-stone-400 hover:border-stone-400 hover:text-stone-700 disabled:opacity-25"
@@ -62,7 +60,7 @@ export default function PasswordDisplay({
         className={`flex items-center gap-1.5 transition-opacity duration-200 ${copied ? "opacity-100" : "opacity-0"}`}
       >
         <Check className="size-3 text-emerald-600" />
-        <p className="text-xs font-semibold text-emerald-700">
+        <p className="text-sm font-semibold text-emerald-600">
           Copied to clipboard
         </p>
       </div>

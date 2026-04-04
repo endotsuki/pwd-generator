@@ -28,9 +28,7 @@ export default function StrengthMeter({ strength, idle }: StrengthMeterProps) {
   return (
     <div className="space-y-1.5">
       <div className="flex items-center justify-between">
-        <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">
-          Strength
-        </span>
+        <span className="text-lg font-medium text-orange-500">Strength</span>
         {!idle ? (
           <span
             className={`rounded-full border px-2 py-0.5 text-[10px] font-bold ${config[strength].badge}`}

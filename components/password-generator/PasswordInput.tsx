@@ -19,15 +19,15 @@ export default function PasswordInput({
   return (
     <div className="space-y-1.5">
       <div className="flex items-center gap-2">
-        <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-stone-400">
+        <span className="text-lg font-medium text-orange-500">
           Word or phrase
         </span>
-        <span className="rounded-full border border-stone-200 bg-stone-100 px-2 py-0.5 text-[10px] font-semibold text-stone-400">
+        <span className="rounded-full border border-stone-200 bg-stone-100 px-2 py-0.5 text-sm text-stone-400">
           optional
         </span>
       </div>
-      <p className="text-xs leading-snug text-stone-400">
-        We&apos;ll transform it into a strong password. Leave empty and use{" "}
+      <p className="text-sm leading-snug text-stone-400">
+        We'll transform it into a strong password. Leave empty and use{" "}
         <span className="font-semibold text-stone-600">Random password</span>{" "}
         instead.
       </p>
@@ -37,7 +37,7 @@ export default function PasswordInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="h-10 rounded-xl border-2 border-stone-300 bg-white px-4 text-sm font-medium text-stone-800 shadow-none placeholder:text-stone-300 focus-visible:border-stone-900 focus-visible:ring-0"
+        className="h-14 rounded-xl border-2 border-stone-300 bg-white px-4 text-sm font-medium text-stone-800 shadow-none placeholder:text-stone-400 focus-visible:border-stone-900 focus-visible:ring-0"
       />
     </div>
   );

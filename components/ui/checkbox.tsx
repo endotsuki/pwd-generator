@@ -1,32 +1,89 @@
-'use client'
+import { cn } from "@/lib/utils";
+import { cva, type VariantProps } from "class-variance-authority";
+import { SVGProps, useId, type ComponentProps } from "react";
 
-import * as React from 'react'
-import * as CheckboxPrimitive from '@radix-ui/react-checkbox'
-import { CheckIcon } from 'lucide-react'
+const checkboxStyles = cva(
+  "bg-checkbox-background group-hover:border-checkbox-checked-border peer-checked:bg-checkbox-checked-background peer-checked:border-checkbox-checked-border! grid place-items-center border border-base-200 transition peer-disabled:border-base-50 [&>svg]:hidden [&>svg]:text-checkbox-checked-icon-color peer-checked:[&>svg]:block peer-disabled:[&>svg]:text-(--border-color-base-50)",
+  {
+    variants: {
+      size: {
+        sm: "size-4 rounded [&>svg]:size-3",
+        md: "size-5 rounded-md [&>svg]:size-3.5",
+      },
+    },
+    defaultVariants: {
+      size: "sm",
+    },
+  },
+);
 
-import { cn } from '@/lib/utils'
+type PropsType = Omit<ComponentProps<"input">, "size"> &
+  VariantProps<typeof checkboxStyles> & {
+    label?: string;
+  };
 
-function Checkbox({
+export function Checkbox({
+  label,
+  id: inputId,
+  size,
+  disabled,
   className,
-  ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
+  ...inputProps
+}: PropsType) {
+  const id = useId();
+
   return (
-    <CheckboxPrimitive.Root
-      data-slot="checkbox"
+    <label
+      htmlFor={id}
       className={cn(
-        'peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50',
+        "group flex cursor-pointer items-center gap-3 select-none aria-disabled:cursor-not-allowed",
         className,
       )}
-      {...props}
+      aria-disabled={disabled}
     >
-      <CheckboxPrimitive.Indicator
-        data-slot="checkbox-indicator"
-        className="flex items-center justify-center text-current transition-none"
-      >
-        <CheckIcon className="size-3.5" />
-      </CheckboxPrimitive.Indicator>
-    </CheckboxPrimitive.Root>
-  )
+      <div>
+        <input
+          type="checkbox"
+          id={id}
+          className="peer sr-only"
+          disabled={disabled}
+          {...inputProps}
+        />
+
+        <div className={checkboxStyles({ size })}>
+          <CheckIcon />
+        </div>
+      </div>
+
+      {label && (
+        <span
+          className={cn("text-sm text-text-50", disabled && "text-text-200")}
+        >
+          {label}
+        </span>
+      )}
+    </label>
+  );
 }
 
-export { Checkbox }
+function CheckIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={14}
+      height={14}
+      viewBox="0 0 14 14"
+      fill="none"
+      className="stroke-checkbox-checked-icon-color"
+      {...props}
+    >
+      <path
+        d="M11.667 3.5L5.25 9.917 2.333 7"
+        stroke="currentColor"
+        strokeWidth={1.94437}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
