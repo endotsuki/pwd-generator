@@ -50,7 +50,7 @@ export default function OptionsPanel({
           step={1}
           className="w-full cursor-pointer **:data-[slot=slider-track]:h-2 **:data-[slot=slider-track]:rounded-full **:data-[slot=slider-track]:bg-stone-200 **:data-[slot=slider-range]:bg-stone-900 **:data-[slot=slider-thumb]:size-5 **:data-[slot=slider-thumb]:border-2 **:data-[slot=slider-thumb]:border-stone-900 **:data-[slot=slider-thumb]:bg-white **:data-[slot=slider-thumb]:shadow-[2px_2px_0px_0px_#1c1917]"
         />
-        <div className="flex justify-between font-mono text-[11px] font-semibold text-stone-400">
+        <div className="flex justify-between font-mono font-semibold text-stone-400">
           <span>6</span>
           <span>64</span>
         </div>
@@ -66,9 +66,9 @@ export default function OptionsPanel({
             <label
               key={key}
               htmlFor={key}
-              className={`flex cursor-pointer items-center gap-2.5 rounded-xl border-2 px-3 py-2 transition-all duration-100 ${
+              className={`flex cursor-pointer items-center gap-2.5 rounded-xl border px-3 py-2 transition-all duration-100 ${
                 options[key]
-                  ? "border-stone-900 bg-orange-50 shadow-[2px_2px_0px_0px_#1c1917]"
+                  ? "border-stone-900 bg-orange-50 shadow-[3px_3px_0px_0px_#1c1917]"
                   : "border-stone-200 bg-white hover:border-stone-400"
               }`}
             >

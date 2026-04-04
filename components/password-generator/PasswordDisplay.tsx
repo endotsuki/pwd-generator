@@ -1,5 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Copy, Check, Sparkles } from "lucide-react";
+import {
+  IconCheck,
+  IconCopy,
+  IconSparklesFilled,
+  IconChecks,
+} from "@tabler/icons-react";
 
 interface PasswordDisplayProps {
   password: string;
@@ -18,7 +23,7 @@ export default function PasswordDisplay({
     <div className="space-y-2">
       <span className="text-lg font-medium text-orange-500">Result</span>
       <div
-        className={`flex min-h-14 items-center gap-3 rounded-xl border-2 px-4 py-3 transition-all duration-200 ${
+        className={`flex min-h-14 items-center gap-3 rounded-xl border px-4 py-3 transition-all duration-200 ${
           hasPassword
             ? "border-stone-900 bg-white"
             : "border-dashed border-stone-300 bg-transparent"
@@ -31,8 +36,9 @@ export default function PasswordDisplay({
             </code>
           ) : (
             <div className="flex items-center gap-2">
-              <Sparkles
-                className="size-4 shrink-0 text-stone-400"
+              <IconSparklesFilled
+                size={30}
+                className="shrink-0 text-stone-400"
                 aria-hidden
               />
               <span className=" text-stone-400">
@@ -47,19 +53,23 @@ export default function PasswordDisplay({
           disabled={!hasPassword}
           variant="ghost"
           size="icon"
-          className={`size-9 shrink-0 cursor-pointer rounded-lg border-2 transition-all duration-150 ${
+          className={`size-9 shrink-0 cursor-pointer rounded-lg border transition-all duration-150 ${
             copied
               ? "border-emerald-600 bg-emerald-50 text-emerald-600"
               : "border-stone-200 text-stone-400 hover:border-stone-400 hover:text-stone-700 disabled:opacity-25"
           }`}
         >
-          {copied ? <Check className="size-4" /> : <Copy className="size-4" />}
+          {copied ? (
+            <IconCheck className="size-4" />
+          ) : (
+            <IconCopy className="size-4" />
+          )}
         </Button>
       </div>
       <div
         className={`flex items-center gap-1.5 transition-opacity duration-200 ${copied ? "opacity-100" : "opacity-0"}`}
       >
-        <Check className="size-3 text-emerald-600" />
+        <IconChecks size={20} className="text-emerald-600" />
         <p className="text-sm font-semibold text-emerald-600">
           Copied to clipboard
         </p>

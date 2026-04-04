@@ -37,7 +37,7 @@ export default function PasswordInput({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
-        className="h-14 rounded-xl border-2 border-stone-300 bg-white px-4 text-sm font-medium text-stone-800 shadow-none placeholder:text-stone-400 focus-visible:border-stone-900 focus-visible:ring-0"
+        className="h-14 rounded-xl border border-stone-300 bg-white px-4 text-sm font-medium text-stone-800 shadow-none placeholder:text-stone-400 focus-visible:border-stone-900 focus-visible:ring-0"
       />
     </div>
   );

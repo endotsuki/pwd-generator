@@ -6,6 +6,7 @@ import OptionsPanel from "@/components/password-generator/OptionsPanel";
 import PasswordDisplay from "@/components/password-generator/PasswordDisplay";
 import StrengthMeter from "@/components/password-generator/StrengthMeter";
 import { generatePassword, calculateStrength } from "@/lib/passwordGenerator";
+import { IconDice5, IconShieldCheckFilled } from "@tabler/icons-react";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -95,23 +96,27 @@ export default function Home() {
               type="button"
               onClick={handleGeneratePassword}
               disabled={!userInput.trim()}
-              className="h-10 flex-1 rounded-xl border-2 border-stone-900 bg-white text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-30"
+              className="h-10 flex-1 rounded-lg border border-stone-900 bg-white text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-30"
             >
               Transform text
             </button>
             <button
               type="button"
               onClick={handleGenerateRandomPassword}
-              className="h-10 flex-1 rounded-xl border-2 border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.75 active:translate-y-0.75"
+              className="h-10 flex-1 rounded-lg border border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.75 active:translate-y-0.75"
             >
-              Random password →
+              Random password
+              <IconDice5 size={23} stroke={1} className="inline-block ml-2" />
             </button>
           </div>
         </div>
 
-        <p className="mt-3 text-center text-xs text-stone-400">
-          Generated locally · never stored · never sent
-        </p>
+        <div className="mt-3 flex items-center justify-center gap-2 text-sm text-emerald-600">
+          <IconShieldCheckFilled size={23} className="inline-block" />
+          <p className="text-center">
+            Generated locally · never stored · never sent
+          </p>
+        </div>
       </div>
     </main>
   );

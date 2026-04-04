@@ -8,7 +8,7 @@ const checkboxStyles = cva(
     variants: {
       size: {
         sm: "size-4 rounded [&>svg]:size-3",
-        md: "size-5 rounded-md [&>svg]:size-3.5",
+        md: "size-5 rounded-sm [&>svg]:size-3.5",
       },
     },
     defaultVariants: {
@@ -30,7 +30,8 @@ export function Checkbox({
   className,
   ...inputProps
 }: PropsType) {
-  const id = useId();
+  const generatedId = useId();
+  const id = inputId || generatedId;
 
   return (
     <label
