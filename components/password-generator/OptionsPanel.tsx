@@ -50,7 +50,7 @@ export default function OptionsPanel({
           min={6}
           max={64}
           step={1}
-          className="w-full [&_[data-slot=slider-track]]:h-2 [&_[data-slot=slider-track]]:rounded-full [&_[data-slot=slider-track]]:bg-stone-200 [&_[data-slot=slider-range]]:bg-stone-900 [&_[data-slot=slider-thumb]]:size-5 [&_[data-slot=slider-thumb]]:border-2 [&_[data-slot=slider-thumb]]:border-stone-900 [&_[data-slot=slider-thumb]]:bg-white [&_[data-slot=slider-thumb]]:shadow-[2px_2px_0px_0px_#1c1917]"
+          className="w-full **:data-[slot=slider-track]:h-2 **:data-[slot=slider-track]:rounded-full **:data-[slot=slider-track]:bg-stone-200 **:data-[slot=slider-range]:bg-stone-900 **:data-[slot=slider-thumb]:size-5 **:data-[slot=slider-thumb]:border-2 **:data-[slot=slider-thumb]:border-stone-900 **:data-[slot=slider-thumb]:bg-white **:data-[slot=slider-thumb]:shadow-[2px_2px_0px_0px_#1c1917]"
         />
         <div className="flex justify-between font-mono text-[11px] font-semibold text-stone-400">
           <span>6</span>

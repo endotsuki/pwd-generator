@@ -1,59 +1,58 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import PasswordInput from '@/components/password-generator/PasswordInput'
-import OptionsPanel from '@/components/password-generator/OptionsPanel'
-import PasswordDisplay from '@/components/password-generator/PasswordDisplay'
-import StrengthMeter from '@/components/password-generator/StrengthMeter'
-import { generatePassword, calculateStrength } from '@/lib/passwordGenerator'
+import { useState } from "react";
+import PasswordInput from "@/components/password-generator/PasswordInput";
+import OptionsPanel from "@/components/password-generator/OptionsPanel";
+import PasswordDisplay from "@/components/password-generator/PasswordDisplay";
+import StrengthMeter from "@/components/password-generator/StrengthMeter";
+import { generatePassword, calculateStrength } from "@/lib/passwordGenerator";
 
 export default function Home() {
-  const [userInput, setUserInput] = useState('')
-  const [length, setLength] = useState(16)
+  const [userInput, setUserInput] = useState("");
+  const [length, setLength] = useState(16);
   const [options, setOptions] = useState({
     uppercase: true,
     lowercase: true,
     numbers: true,
     symbols: true,
-  })
-  const [generatedPassword, setGeneratedPassword] = useState('')
-  const [copied, setCopied] = useState(false)
+  });
+  const [generatedPassword, setGeneratedPassword] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const handleGeneratePassword = () => {
-    const password = generatePassword(userInput, length, options)
-    setGeneratedPassword(password)
-    setCopied(false)
-  }
+    const password = generatePassword(userInput, length, options);
+    setGeneratedPassword(password);
+    setCopied(false);
+  };
 
   const handleGenerateRandomPassword = () => {
-    const password = generatePassword('', length, options)
-    setGeneratedPassword(password)
-    setCopied(false)
-  }
+    const password = generatePassword("", length, options);
+    setGeneratedPassword(password);
+    setCopied(false);
+  };
 
   const handleOptionChange = (key: keyof typeof options) => {
-    const newOptions = { ...options, [key]: !options[key] }
-    setOptions(newOptions)
+    const newOptions = { ...options, [key]: !options[key] };
+    setOptions(newOptions);
     setTimeout(() => {
-      const password = generatePassword(userInput, length, newOptions)
-      setGeneratedPassword(password)
-    }, 0)
-  }
+      const password = generatePassword(userInput, length, newOptions);
+      setGeneratedPassword(password);
+    }, 0);
+  };
 
   const handleCopyToClipboard = () => {
     if (generatedPassword) {
-      navigator.clipboard.writeText(generatedPassword)
-      setCopied(true)
-      setTimeout(() => setCopied(false), 2000)
+      navigator.clipboard.writeText(generatedPassword);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     }
-  }
+  };
 
-  const strength = calculateStrength(generatedPassword)
+  const strength = calculateStrength(generatedPassword);
 
   return (
     <main className="flex h-screen flex-col items-center justify-center bg-[#FAF8F4] px-4">
       <div className="w-full max-w-md">
-
         {/* Header */}
         <header className="mb-5 flex items-end justify-between">
           <div>
@@ -65,13 +64,14 @@ export default function Home() {
             </h1>
           </div>
           <p className="text-right text-xs text-stone-400 leading-relaxed">
-            Strong passwords<br />in seconds
+            Strong passwords
+            <br />
+            in seconds
           </p>
         </header>
 
         {/* Card */}
         <div className="rounded-2xl border-2 border-stone-900 bg-white shadow-[6px_6px_0px_0px_#1c1917]">
-
           {/* Result + Strength */}
           <div className="rounded-t-2xl border-b-2 border-stone-900 bg-stone-50 px-5 py-4">
             <PasswordDisplay
@@ -112,7 +112,7 @@ export default function Home() {
             <button
               type="button"
               onClick={handleGenerateRandomPassword}
-              className="h-10 flex-1 rounded-xl border-2 border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-[2px] hover:translate-y-[2px] active:shadow-none active:translate-x-[3px] active:translate-y-[3px]"
+              className="h-10 flex-1 rounded-xl border-2 border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.75 active:translate-y-0.75"
             >
               Random password →
             </button>
@@ -124,5 +124,5 @@ export default function Home() {
         </p>
       </div>
     </main>
-  )
+  );
 }

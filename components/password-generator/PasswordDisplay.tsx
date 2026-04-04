@@ -20,7 +20,7 @@ export default function PasswordDisplay({
         Result
       </span>
       <div
-        className={`flex min-h-[3.25rem] items-center gap-3 rounded-xl border-2 px-4 py-3 transition-all duration-200 ${
+        className={`flex min-h-14 items-center gap-3 rounded-xl border-2 px-4 py-3 transition-all duration-200 ${
           hasPassword
             ? "border-stone-900 bg-white"
             : "border-dashed border-stone-300 bg-transparent"
