@@ -71,7 +71,12 @@ export default function Home() {
               copied={copied}
             />
             <div className="mt-3">
-              <StrengthMeter strength={strength} idle={!generatedPassword} />
+              <StrengthMeter
+                strength={strength}
+                idle={!generatedPassword}
+                length={length} // add this
+                options={options} // add this
+              />
             </div>
           </div>
 
