@@ -101,14 +101,14 @@ export default function Home() {
               type="button"
               onClick={handleGeneratePassword}
               disabled={!userInput.trim()}
-              className="h-10 flex-1 rounded-lg border border-stone-900 bg-white text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-30"
+              className="h-10 flex-1 cursor-pointer rounded-lg border border-stone-900 bg-white text-sm font-semibold text-stone-700 transition-all hover:bg-stone-50 disabled:cursor-not-allowed disabled:opacity-30"
             >
               Transform text
             </button>
             <button
               type="button"
               onClick={handleGenerateRandomPassword}
-              className="h-10 flex-1 rounded-lg border border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.75 active:translate-y-0.75"
+              className="h-10 cursor-pointer flex-1 rounded-lg border border-stone-900 bg-orange-500 text-sm font-bold text-white shadow-[3px_3px_0px_0px_#1c1917] transition-all hover:bg-orange-400 hover:shadow-[1px_1px_0px_0px_#1c1917] hover:translate-x-0.5 hover:translate-y-0.5 active:shadow-none active:translate-x-0.75 active:translate-y-0.75"
             >
               Random
               <IconDice5 size={23} stroke={1} className="inline-block ml-2" />
