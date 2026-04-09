@@ -9,6 +9,9 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Keyzen",
   description: "Create strong, secure passwords instantly",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({

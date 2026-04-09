@@ -56,9 +56,12 @@ export default function Home() {
       <div className="w-full max-w-md">
         {/* Header */}
         <header className="mb-5 flex items-end justify-between">
-          <h1 className="text-3xl font-bold leading-none tracking-tight text-stone-900">
-            Keyzen
-          </h1>
+          <div className="flex items-center">
+            <img src="/logo.png" alt="Keyzen Logo" className="h-10 w-10" />
+            <h1 className="text-3xl font-bold leading-none tracking-tight text-stone-900">
+              Keyzen
+            </h1>
+          </div>
         </header>
 
         {/* Card */}
