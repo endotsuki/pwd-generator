@@ -40,7 +40,7 @@ export default function OptionsPanel({
           <span className="text-sm font-black uppercase tracking-widest text-stone-500">
             Length
           </span>
-          <span className="min-w-[2.25rem] rounded-md border-2 border-stone-900 bg-orange-500 px-2 py-0.5 text-center font-mono text-sm font-black tabular-nums text-white shadow-[2px_2px_0px_0px_#1c1917]">
+          <span className="min-w-9 rounded-md border-2 border-stone-900 bg-orange-500 px-2 py-0.5 text-center font-mono text-sm font-black tabular-nums text-white shadow-[2px_2px_0px_0px_#1c1917]">
             {length}
           </span>
         </div>
