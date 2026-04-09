@@ -6,7 +6,8 @@ import OptionsPanel from "@/components/password-generator/OptionsPanel";
 import PasswordDisplay from "@/components/password-generator/PasswordDisplay";
 import StrengthMeter from "@/components/password-generator/StrengthMeter";
 import { generatePassword, calculateStrength } from "@/lib/passwordGenerator";
-import { IconDice5, IconShieldCheckFilled } from "@tabler/icons-react";
+import { IconDice5 } from "@tabler/icons-react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function Home() {
   const [userInput, setUserInput] = useState("");
@@ -119,8 +120,13 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-center gap-2 text-sm text-emerald-600">
-          <IconShieldCheckFilled size={23} className="inline-block" />
+        <div className="mt-3 flex items-center justify-center text-base text-emerald-600">
+          <DotLottieReact
+            src="/Shield icon.lottie"
+            autoplay
+            loop
+            className="w-25"
+          />
           <p className="text-center">
             Generated locally · never stored · never sent
           </p>
